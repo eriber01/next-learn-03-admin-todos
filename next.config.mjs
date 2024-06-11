@@ -4,9 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'https://tailus.io',
-        port: '',
-        pathname: '/sources/blocks/stats-cards/preview/images/**'
+        hostname: 'tailus.io',
       }
     ]
   }

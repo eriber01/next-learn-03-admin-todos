@@ -40,3 +40,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: error.message })
   }
 }
+
+export async function DELETE() {
+  try {
+    await prisma.todo.deleteMany({ where: { complete: true } })
+    return NextResponse.json({ message: 'Borrados' })
+  } catch (error: any) {
+    console.log(error);
+    return NextResponse.json({ message: "Error" })
+  }
+}
