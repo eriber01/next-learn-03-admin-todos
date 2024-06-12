@@ -1,28 +1,19 @@
 'use client';
 
-import { useRouter } from "next/navigation";
 import { IoTrashOutline } from "react-icons/io5";
-import * as apiTodo from "../helpers/todos";
 import { FormEvent, useState } from "react";
+import { addTodo, deleteCompleted } from "../actions/todo-actions";
 
 export const NewTodo = () => {
   const [description, setDescription] = useState('')
 
-  const router = useRouter()
   const CreateTodo = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!description.trim()) return;
 
-    await apiTodo.createTodo(description)
+    await addTodo(description)
     setDescription('')
-    router.refresh()
-  }
-
-  const deleteCompleted = async () => {
-
-    await apiTodo.deleteCompleted()
-    router.refresh()
   }
 
   return (
