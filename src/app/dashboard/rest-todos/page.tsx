@@ -11,7 +11,6 @@ export const metadata = {
 export default async function RestTodoPage() {
 
   const todos = await prisma.todo.findMany({ orderBy: { description: 'asc' } })
-  console.log('generado rest todo');
 
   return (
     <div>
