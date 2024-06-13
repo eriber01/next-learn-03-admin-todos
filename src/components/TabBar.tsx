@@ -1,25 +1,27 @@
 'use client'
 
-import { useEffect, useState } from "react";
-import { getCookie, setCookie } from "cookies-next";
+import { useState } from "react";
+import { setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 interface Props {
   currentTab?: number;
   tabOptions?: number[]
 }
 
-export const TabBar = ({ currentTab = 1, tabOptions = [1, 2, 3] }: Props) => {
-
+export const TabBar = ({ currentTab = 1, tabOptions = [1, 2, 3, 4] }: Props) => {
+  const router = useRouter()
   const [selected, setSelected] = useState(currentTab)
 
   const onTabSelected = (tab: number) => {
     setSelected(tab)
     setCookie('selectedTab', tab.toString())
+    router.refresh()
   }
 
   return (
     <div className={`
       grid w-full space-x-2 rounded-xl bg-gray-200 p-2
-      grid-cols-${tabOptions.length}
+      ${'grid-cols-' + tabOptions.length}
     `}>
       {
         tabOptions.map(tab => (
