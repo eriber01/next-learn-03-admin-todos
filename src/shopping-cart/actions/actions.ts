@@ -29,7 +29,7 @@ export const removeProductToCart = (id: string) => {
   setCookie('cart', JSON.stringify(cookieCart))
 }
 
-export const removeOneProductToCart = (id: string) => {
+export const removeSingleItemFromCart = (id: string) => {
   const cookieCart = getCookieCart()
 
   if (cookieCart[id]) {
